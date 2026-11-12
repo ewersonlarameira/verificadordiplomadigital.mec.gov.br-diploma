@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verificação da estrutura XML | Demonstração</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
+<style>
+* { box-sizing: border-box }
+body { margin: 0; background: #f2f6f8; color: #101010; font: 16px Raleway, Arial, sans-serif; font-variant-numeric: lining-nums }
+header { min-height: 74px; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 3.65%; flex-wrap: wrap }
+header strong { color: #1450a4; font-size: 28px; font-weight: 800 }
+header span { margin-left: 12px; color: #595959; font-size: 14px }
+nav { display: flex; gap: 16px; flex-wrap: wrap; align-items: center }
+a { color: inherit }
+nav a { color: #23558c; font-size: 12px; text-decoration: none }
+nav a:last-child { border-radius: 24px; background: #f5f5f5; color: #164e9d; padding: 8px 13px; font-size: 15px; font-weight: 800 }
+main { position: relative; isolation: isolate; padding-bottom: 70px }
+main::before { content: ''; position: absolute; z-index: -1; inset: 0 0 auto; height: 395px; background: radial-gradient(ellipse at 24% 105%, #164da5, transparent 65%), #1550aa }
+h1 { margin: 0; padding: 34px 3.65% 10px; color: #fff; border-bottom: 1px solid #ffffff80; font-size: clamp(23px, 3vw, 36px); line-height: 1.18; font-weight: 800 }
+article { position: relative; isolation: isolate; width: min(790px, calc(100% - 32px)); margin: 84px auto 0; padding: 30px 20px 41px; background: #fff; border-radius: 13px; box-shadow: 0 15px 43px #53785544; text-align: center; overflow: hidden }
+h2 { font-size: clamp(22px, 3vw, 28px); line-height: 34px; margin: 0 0 14px; font-weight: 800 }
+.copy { text-align: left; font-size: 14px; line-height: 19px; font-weight: 700; margin: 0 0 17px; color: #333 }
+.certificate { display: block; width: 105px; height: 76px; margin: 32px auto 0; color: #141a72 }
+.watermark { position: absolute; z-index: -1; top: 115px; left: 50%; transform: translateX(-50%); width: min(405px, 90%); height: 290px; color: #f7f7f7 }
+.hint { color: #174d9f; font-size: 18px; font-weight: 800; line-height: 22px; margin: 26px 0 26px }
+.action { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto 19px; width: 228px; max-width: 100%; min-height: 59px; border: 0; border-radius: 32px; background: #131b78; color: #fff; font: 800 17px Raleway, Arial, sans-serif; cursor: pointer }
+.action:disabled { background: #ddd; color: #fff; cursor: default }
+.action:focus-visible, a:focus-visible { outline: 3px solid #cd8600; outline-offset: 3px }
+.action svg { width: 21px; height: 21px; flex: none }
+small { display: block; margin-top: 32px; color: #595959; font-size: 12px; line-height: 17px }
+.status { overflow-wrap: anywhere; font-size: 14px }
+.status:empty { display: none }
+footer { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: #102654; color: #fff; padding: 38px 3.65%; font-size: 14px }
+@media (max-width: 600px) { article { margin-top: 44px } header strong { font-size: 24px } header span { margin-left: 0; display: block } }
+</style>
+<header><div><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav aria-label="Referências"><a href="https://www.gov.br/mec/pt-br/diploma-digital">Diploma Digital</a><a href="https://verificadordiplomadigital.mec.gov.br/diploma">Verificador oficial</a></nav></header>
+<main><h1>Verificação de conformidade da Estrutura XML do Diploma Digital</h1><article><h2>Verificar a estrutura XML do Diploma</h2>
+<p class="copy">Esta página de exemplo reproduz o fluxo de seleção de um arquivo XML do diploma digital. O teste é feito no seu navegador.</p>
+<p class="copy">A demonstração verifica apenas a sintaxe do XML. Para verificar a conformidade com o XSD, use o <a href="https://verificadordiplomadigital.mec.gov.br/diploma">verificador oficial do MEC</a>.</p>
+<svg class="watermark" viewBox="0 0 405 290" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round">
+<path d="M16 162C46 65 153 27 211 63s41 109-12 141-91 15-77-21c13-34 57-32 67-62 9-28-30-39-61-25-33 14-68 50-80 79M84 72C164 1 262 17 299 86c38 72 0 148-51 185M282 30c96 44 114 158 54 231M339 18c76 64 74 175 37 235"/>
+</svg>
+<svg class="certificate" viewBox="0 0 105 76" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M31 2H6a4 4 0 0 0-4 4v64a4 4 0 0 0 4 4h93a4 4 0 0 0 4-4V6a4 4 0 0 0-4-4H37"/>
+<path d="M50 67H16a8 8 0 0 0-7-7V16a8 8 0 0 0 7-7h73a8 8 0 0 0 7 7v44a8 8 0 0 0-7 7H56M40 20h25"/>
+<path d="M19 30h66M19 40h66M19 50h32" stroke="#f0f0f6"/>
+</svg>
+<p class="hint">Selecione o arquivo .xml e depois clique em Verificar.</p>
+<input id="file" type="file" accept=".xml,text/xml,application/xml" hidden>
+<button type="button" class="action" id="choose"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17H5a3.5 3.5 0 0 1-.4-7A6 6 0 0 1 16 8a4.5 4.5 0 0 1 2 9h-1m-5 4v-9m-4 4 4-4 4 4"/></svg>Escolher arquivo</button>
+<p class="status" id="filename" aria-live="polite"></p>
+<button type="button" class="action" id="check" disabled>Verificar</button>
+<p class="status" id="result" role="status"></p>
+<small>Referência do verificador oficial: XSD 1.05 e versões anteriores.</small></article></main>
+<footer><strong>Demonstração não oficial</strong><a href="https://www.gov.br/mec/pt-br/diploma-digital/dados">Pacote XSD do MEC</a><a href="https://emec.mec.gov.br/">Cadastro e-MEC</a></footer>
+<script>
+const file=document.getElementById('file');
+const choose=document.getElementById('choose');
+const check=document.getElementById('check');
+const filename=document.getElementById('filename');
+const result=document.getElementById('result');
+choose.addEventListener('click',()=>file.click());
+file.addEventListener('change',()=>{
+  const selected=file.files[0];
+  const supported=selected && /\.xml$/i.test(selected.name);
+  check.disabled=!supported;
+  filename.textContent=selected?.name ?? '';
+  result.textContent=selected && !supported ? 'Selecione um arquivo com a extensão .xml.' : '';
+});
+check.addEventListener('click',async()=>{
+  const selected=file.files[0];
+  choose.disabled=true;
+  check.disabled=true;
+  try{
+    const xml=new DOMParser().parseFromString(await selected.text(),'application/xml');
+    const invalid=xml.getElementsByTagNameNS('http://www.mozilla.org/newlayout/xml/parsererror.xml','parsererror').length>0;
+    result.textContent=invalid?'O arquivo contém um erro de sintaxe XML.':'XML bem-formado. A conformidade com o XSD deve ser verificada no portal do MEC.';
+  }catch{
+    result.textContent='Não foi possível ler o arquivo.';
+  }finally{
+    choose.disabled=false;
+    check.disabled=false;
+  }
+});
+</script></html>
