@@ -89,6 +89,17 @@ main { padding-bottom: 96px }
 .report-actions #reset { color: #1351b4; border: 1px solid; background: #fff }
 @media (max-width: 520px) { .report-summary { flex-direction: column; gap: 12px } }
 @media print { header, h1, footer, .report-actions, #view-document { display: none } #report { margin: 0; width: 100%; box-shadow: none } }
+#report-details details { --panel-accent: #637287; --panel-fill: #edf1f6; border-color: #dfe3e8; border-radius: 5px; overflow: hidden }
+#report-details .observed { --panel-accent: #298454; --panel-fill: #d8f2e5 }
+#report-details details[open] { border-color: var(--panel-accent) }
+#report-details details[open] > summary { background: var(--panel-fill) }
+#report-details summary::after { border-color: var(--panel-accent) }
+#report-details summary::before, .panel-body li::before { content: '•'; display: grid; place-items: center; width: 14px; height: 14px; border-radius: 50%; flex: none; color: white; background: var(--panel-accent); font: bold 10px Arial, sans-serif }
+#report-details .observed summary::before { content: '✓' }
+.panel-body { padding: 22px 20px 26px; color: #111d7d }
+.panel-body strong { display: block; margin-bottom: 16px }
+.panel-body ul { list-style: none; padding: 0 0 0 clamp(8px, 5vw, 35px); margin: 0 }
+.panel-body li { display: flex; align-items: baseline; gap: clamp(12px, 4vw, 26px); padding: 5px 0; line-height: 1.4; overflow-wrap: anywhere }
 </style>
 <header><div><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav aria-label="Referências"><a href="https://www.gov.br/mec/pt-br/diploma-digital">Diploma Digital</a><a href="https://verificadordiplomadigital.mec.gov.br/diploma">Verificador oficial</a></nav></header>
 <main><h1>Verificação de conformidade da Estrutura XML do Diploma Digital</h1><article><h2>Verificar a estrutura XML do Diploma</h2>

@@ -36,6 +36,29 @@ function addPanel(container, label, entries) {
   container.append(panel);
 }
 
+function addReportPanel(container, label, items, observed, heading) {
+  const panel = document.createElement('details');
+  panel.className = observed ? 'observed' : 'pending';
+  const title = document.createElement('summary');
+  const body = document.createElement('div');
+  body.className = 'panel-body';
+  title.textContent = label;
+  if (heading) {
+    const caption = document.createElement('strong');
+    caption.textContent = heading;
+    body.append(caption);
+  }
+  const list = document.createElement('ul');
+  for (const message of items) {
+    const item = document.createElement('li');
+    item.textContent = message;
+    list.append(item);
+  }
+  body.append(list);
+  panel.append(title, body);
+  container.append(panel);
+}
+
 function render(root, info, name) {
   const data = child(info, 'DadosDiploma');
   const register = child(info, 'DadosRegistro');
@@ -72,10 +95,15 @@ function render(root, info, name) {
   byId('report-version').textContent = 'Versão declarada no XML: ' + (summary[5][1] || 'Não informada');
   const panels = byId('report-details');
   panels.replaceChildren();
-  addPanel(panels, 'Estrutura do Diploma Digital', [['Sintaxe', 'XML bem-formado'], ['Conformidade XSD', 'Verificação no MEC']]);
-  addPanel(panels, 'Assinaturas digitais encontradas', signatures);
-  for (const label of ['Conformidade das assinaturas digitais', 'Integridade do arquivo', 'Código de validação']) {
-    addPanel(panels, label, [['Resultado', 'Consulte o verificador oficial do MEC']]);
+  const signatureItems = signatures.filter(([, count]) => Number(count) > 0)
+    .map(([section]) => 'Assinatura encontrada em ' + section);
+  addReportPanel(panels, 'Estrutura do Diploma Digital',
+    ['XML bem-formado', 'Conformidade com o XSD: consulte o verificador oficial do MEC.'], true);
+  addReportPanel(panels, 'Tipos de Assinaturas Digitais',
+    signatureItems.length ? signatureItems : ['Nenhuma assinatura encontrada nas seções do XML.'],
+    signatureItems.length > 0, 'Itens encontrados no XML');
+  for (const label of ['Conformidade das Assinaturas Digitais', 'Integridade do Arquivo do Diploma Digital', 'Código de Validação']) {
+    addReportPanel(panels, label, ['Consulte o verificador oficial do MEC.'], false);
   }
   viewer.replaceChildren();
   addPanel(viewer, 'Dados do Diploma', [...summary, ['Modalidade', value(course, 'Modalidade')], ['Grau', value(course, 'GrauConferido')]]);
