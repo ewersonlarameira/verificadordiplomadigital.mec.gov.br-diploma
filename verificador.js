@@ -92,7 +92,7 @@ function render(root, info, name) {
     row.append(description);
     overview.append(row);
   });
-  byId('report-version').textContent = 'Versão declarada no XML: ' + (summary[5][1] || 'Não informada');
+  byId('report-version').textContent = 'Versão do XML: ' + (summary[5][1] || 'Não informada');
   const panels = byId('report-details');
   panels.replaceChildren();
   const signatureItems = signatures.filter(([, count]) => Number(count) > 0)
