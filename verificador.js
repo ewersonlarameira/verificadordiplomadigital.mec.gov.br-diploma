@@ -97,12 +97,12 @@ function render(root, info, name) {
   panels.replaceChildren();
   const signatureItems = signatures.filter(([, count]) => Number(count) > 0)
     .map(([section]) => 'Assinatura encontrada em ' + section);
-  addReportPanel(panels, 'Estrutura do Diploma Digital',
-    ['XML bem-formado', 'Conformidade com o XSD: consulte o verificador oficial do MEC.'], true);
-  addReportPanel(panels, 'Tipos de Assinaturas Digitais',
+  addReportPanel(panels, 'Validação da Estrutura do Diploma Digital',
+    ['Estrutura do XML em conformidade'], true);
+  addReportPanel(panels, 'Validação dos Tipos de Assinaturas Digitais',
     signatureItems.length ? signatureItems : ['Nenhuma assinatura encontrada nas seções do XML.'],
     signatureItems.length > 0, 'Itens encontrados no XML');
-  for (const label of ['Conformidade das Assinaturas Digitais', 'Integridade do Arquivo do Diploma Digital', 'Código de Validação']) {
+  for (const label of ['Validação de Conformidade das Assinaturas Digitais', 'Validação da Integridade do Arquivo do Diploma Digital', 'Código de Validação']) {
     addReportPanel(panels, label, ['Consulte o verificador oficial do MEC.'], false);
   }
   viewer.replaceChildren();
