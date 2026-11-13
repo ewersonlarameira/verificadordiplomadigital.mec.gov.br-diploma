@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verificação da estrutura XML | Demonstração</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
+<style>
+* { box-sizing: border-box }
+body { margin: 0; background: #f2f6f8; color: #101010; font: 16px Raleway, Arial, sans-serif; font-variant-numeric: lining-nums }
+header { min-height: 74px; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 3.65%; flex-wrap: wrap }
+header strong { color: #1450a4; font-size: 28px; font-weight: 800 }
+header span { margin-left: 12px; color: #595959; font-size: 14px }
+nav { display: flex; gap: 16px; flex-wrap: wrap; align-items: center }
+a { color: inherit }
+nav a { color: #23558c; font-size: 12px; text-decoration: none }
+nav a:last-child { border-radius: 24px; background: #f5f5f5; color: #164e9d; padding: 8px 13px; font-size: 15px; font-weight: 800 }
+main { position: relative; isolation: isolate; padding-bottom: 70px }
+main::before { content: ''; position: absolute; z-index: -1; inset: 0 0 auto; height: 395px; background: radial-gradient(ellipse at 24% 105%, #164da5, transparent 65%), #1550aa }
+h1 { margin: 0; padding: 34px 3.65% 10px; color: #fff; border-bottom: 1px solid #ffffff80; font-size: clamp(23px, 3vw, 36px); line-height: 1.18; font-weight: 800 }
+article { position: relative; isolation: isolate; width: min(790px, calc(100% - 32px)); margin: 84px auto 0; padding: 30px 20px 41px; background: #fff; border-radius: 13px; box-shadow: 0 15px 43px #53785544; text-align: center; overflow: hidden }
+h2 { font-size: clamp(22px, 3vw, 28px); line-height: 34px; margin: 0 0 14px; font-weight: 800 }
+.copy { text-align: left; font-size: 14px; line-height: 19px; font-weight: 700; margin: 0 0 17px; color: #333 }
+.certificate { display: block; width: 105px; height: 76px; margin: 32px auto 0; color: #141a72 }
+.watermark { position: absolute; z-index: -1; top: 115px; left: 50%; transform: translateX(-50%); width: min(405px, 90%); height: 290px; color: #f7f7f7 }
+.hint { color: #174d9f; font-size: 18px; font-weight: 800; line-height: 22px; margin: 26px 0 26px }
+.action { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto 19px; width: 228px; max-width: 100%; min-height: 59px; border: 0; border-radius: 32px; background: #131b78; color: #fff; font: 800 17px Raleway, Arial, sans-serif; cursor: pointer }
+.action:disabled { background: #ddd; color: #fff; cursor: default }
+.action:focus-visible, a:focus-visible { outline: 3px solid #cd8600; outline-offset: 3px }
+.action svg { width: 21px; height: 21px; flex: none }
+small { display: block; margin-top: 32px; color: #595959; font-size: 12px; line-height: 17px }
+.status { overflow-wrap: anywhere; font-size: 14px }
+.status:empty { display: none }
+main { padding-bottom: 96px }
+.site-footer { background: #fff; color: #071d41; border-top: 1px solid #ccc; font-size: 14px }
+.footer-inner { max-width: 1500px; margin: auto; padding: 48px 20px 70px }
+.footer-logo { display: block; width: fit-content; margin: 0 auto 34px }
+.site-footer img { display: block; object-fit: contain; max-width: 100% }
+.site-footer .footer-columns { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; align-items: start }
+.footer-columns section { min-width: 0; padding-inline: 28px }
+.site-footer h3 { font-size: 14px; text-transform: uppercase; margin: 0 }
+.site-footer ul { list-style: none; margin: 0; padding: 0 }
+.site-footer a { text-decoration: none }
+.site-footer a:hover { text-decoration: underline }
+.site-footer .footer-columns a { display: block; padding: 0; border-radius: 0; background: none; font: inherit; color: inherit }
+.site-footer .footer-columns h3 a { color: #1351b4; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden }
+.footer-columns h3, .footer-columns li { min-height: 48px; display: flex; align-items: center }
+.footer-lower { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 88px }
+.footer-lower h3 { font-size: 16px; margin-bottom: 12px }
+.footer-lower ul { display: flex; gap: 12px 32px; flex-wrap: wrap }
+.footer-lower li { text-transform: uppercase }
+.footer-lower a, .footer-license a { color: #1351b4 }
+.footer-license { border-top: 1px solid #ccc; margin: 0; padding: 16px; text-align: center; font-size: 12px }
+.footer-license a { font-weight: 700 }
+@media (max-width: 1024px) { .site-footer .footer-columns { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 20px } }
+@media (max-width: 560px) { .site-footer .footer-columns { grid-template-columns: repeat(2,minmax(0,1fr)) } .footer-columns section { padding-inline: 8px } .footer-lower { margin-top: 36px } }
+@media (max-width: 600px) { article { margin-top: 44px } header strong { font-size: 24px } header span { margin-left: 0; display: block } }
+[hidden] { display: none !important }
+#report-details, #document-viewer, dl { text-align: left }
+#report details { border: 1px solid #d8e1ed; border-radius: 6px; padding: 12px; margin: 10px 0 }
+#report summary { cursor: pointer; color: #1351b4 }
+#report dt { font-weight: 700; margin-top: 8px }
+#report dd { margin: 0; overflow-wrap: anywhere }
+#document-viewer { margin: 18px 0 }
+.scan-preview { position: relative; width: 105px; margin: 32px auto 0 }
+.scan-preview .certificate { margin: 0 }
+.scan-line { display: none; position: absolute; z-index: 1; inset: 0 -8px auto; height: 3px; border-radius: 2px; background: #1351b4; box-shadow: 0 0 12px 3px #65a2ef8c }
+.is-scanning .scan-line { display: block; animation: scan-xml 750ms ease-in-out infinite alternate }
+@keyframes scan-xml { from { transform: translateY(2px) } to { transform: translateY(71px) } }
+@media (prefers-reduced-motion: reduce) { .is-scanning .scan-line { animation: none; top: 50% } }
+</style>
+<header><div><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav aria-label="Referências"><a href="https://www.gov.br/mec/pt-br/diploma-digital">Diploma Digital</a><a href="https://verificadordiplomadigital.mec.gov.br/diploma">Verificador oficial</a></nav></header>
+<main><h1>Verificação de conformidade da Estrutura XML do Diploma Digital</h1><article><h2>Verificar a estrutura XML do Diploma</h2>
+<p class="copy">Esta página de exemplo reproduz o fluxo de seleção de um arquivo XML do diploma digital. O teste é feito no seu navegador.</p>
+<p class="copy">A demonstração verifica apenas a sintaxe do XML. Para verificar a conformidade com o XSD, use o <a href="https://verificadordiplomadigital.mec.gov.br/diploma">verificador oficial do MEC</a>.</p>
+<svg class="watermark" viewBox="0 0 405 290" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round">
+<path d="M16 162C46 65 153 27 211 63s41 109-12 141-91 15-77-21c13-34 57-32 67-62 9-28-30-39-61-25-33 14-68 50-80 79M84 72C164 1 262 17 299 86c38 72 0 148-51 185M282 30c96 44 114 158 54 231M339 18c76 64 74 175 37 235"/>
+</svg>
+<div class="scan-preview" aria-hidden="true"><svg class="certificate" viewBox="0 0 105 76" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+<path d="M31 2H6a4 4 0 0 0-4 4v64a4 4 0 0 0 4 4h93a4 4 0 0 0 4-4V6a4 4 0 0 0-4-4H37"/>
+<path d="M50 67H16a8 8 0 0 0-7-7V16a8 8 0 0 0 7-7h73a8 8 0 0 0 7 7v44a8 8 0 0 0-7 7H56M40 20h25"/>
+<path d="M19 30h66M19 40h66M19 50h32" stroke="#f0f0f6"/>
+</svg><span class="scan-line"></span></div>
+<p class="hint">Selecione o arquivo .xml e clique em Verificar.</p>
+<input id="file" type="file" accept=".xml,text/xml,application/xml" hidden>
+<button type="button" class="action" id="choose"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17H5a3.5 3.5 0 0 1-.4-7A6 6 0 0 1 16 8a4.5 4.5 0 0 1 2 9h-1m-5 4v-9m-4 4 4-4 4 4"/></svg>Escolher arquivo</button>
+<p class="status" id="filename" aria-live="polite"></p>
+<button type="button" class="action" id="check" disabled>Verificar</button>
+<p class="status" id="result" role="status"></p>
+<small>Referência do verificador oficial: XSD 1.05 e versões anteriores.</small></article>
+<article id="report" hidden>
+<h2 tabindex="-1">Resultado da leitura do XML</h2>
+<p id="report-file"></p>
+<p><strong>Demonstração não oficial.</strong> Para verificar a conformidade técnica, utilize o <a href="https://verificadordiplomadigital.mec.gov.br/diploma">verificador oficial do MEC</a>.</p>
+<dl id="document-summary"></dl>
+<div id="report-details"></div>
+<button class="action" id="view-document" type="button" aria-expanded="false" aria-controls="document-viewer">Visualizar documento</button>
+<section id="document-viewer" aria-label="Visualização do documento" hidden></section>
+<button class="action" id="reset" type="button">Nova verificação</button>
+</article></main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a class="footer-logo" href="https://www.gov.br/"><img src="https://www.gov.br/++theme++padrao_govbr/img/govbr-colorido-b.png" width="133" height="48" alt="Portal Gov.br"></a>
+    <nav class="footer-columns" aria-label="Links do Ministério da Educação">
+<section><h3><a href="https://www.gov.br/mec/pt-br/composicao">Composição</a></h3><ul><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/institucional/competencias">Competências</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/institucional/gabinete-do-ministro">Gabinete do Ministro</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/institucional/secretarias">Secretarias</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/institucional/estrutura-organizacional">Estrutura Organizacional</a></li></ul></section>
+<section><h3><a href="https://sistema.ouvidorias.gov.br/publico/Manifestacao/SelecionarTipoManifestacao.aspx?ReturnUrl=%2f">Canais de Atendimento</a></h3><ul><li><a href="https://sistema.ouvidorias.gov.br/publico/Manifestacao/SelecionarTipoManifestacao.aspx?ReturnUrl=%2f">Ouvidoria</a></li><li><a href="https://www.gov.br/mec/pt-br/canais_atendimento/area-de-imprensa">Área de imprensa</a></li><li><a href="https://www.gov.br/mec/pt-br/canais_atendimento/fale-conosco">Fale Conosco</a></li></ul></section>
+<section><h3><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/">Acesso à Informação</a></h3><ul><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/institucional/">Institucional</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/acoes-e-programas">Ações e Programas</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/instancia-permanente-de-negociacao-e-cooperacao">Instância Permanente de Negociação e Cooperação</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/participacao-social">Participação Social</a></li></ul></section>
+<section><h3><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/">Centrais de Conteúdo</a></h3><ul><li><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/videos">Vídeos</a></li><li><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/audios">Áudios</a></li><li><a href="https://www.flickr.com/photos/mineducacao/albums">Fotos</a></li><li><a href="https://www.gov.br/clientes/portalgovbr/portalgovbr/pt-br/apps/@@galeria-de-aplicativos?categoria_path=/pt-br/categorias/educacao-e-pesquisa">Aplicativos</a></li><li><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/campanhas-1">Campanhas</a></li></ul></section>
+<section><h3><a href="https://www.gov.br/mec/pt-br/sistema">Sistemas</a></h3><ul><li><a href="https://sisu.mec.gov.br/">Sisu</a></li><li><a href="https://siteprouni.mec.gov.br/">Prouni</a></li><li><a href="https://fies.mec.gov.br/">Fies</a></li><li><a href="https://emec.mec.gov.br/">E-mec</a></li></ul></section>
+<section><h3><a href="https://www.gov.br/mec/pt-br/diploma-digital/">Verificação de conformidade da Estrutura XML do Diploma Digital</a></h3><ul><li><a href="https://www.gov.br/mec/pt-br/diploma-digital/instituicoes">Instituições</a></li><li><a href="https://www.gov.br/mec/pt-br/diploma-digital/legislacao">Legislação</a></li><li><a href="https://www.gov.br/mec/pt-br/diploma-digital/perguntas-frequentes">Perguntas Frequentes</a></li></ul></section>
+    </nav>
+    <div class="footer-lower">
+      <section aria-labelledby="footer-social"><h3 id="footer-social">Redes sociais</h3><ul><li><a href="https://twitter.com/mec_comunicacao">Twitter</a></li><li><a href="https://www.youtube.com/ministeriodaeducacao">YouTube</a></li><li><a href="https://www.facebook.com/ministeriodaeducacao/">Facebook</a></li><li><a href="https://www.flickr.com/mineducacao">Flickr</a></li><li><a href="https://www.instagram.com/mineducacao">Instagram</a></li><li><a href="https://soundcloud.com/mineducacao">SoundCloud</a></li></ul></section>
+      <a class="footer-ministry" href="https://www.gov.br/mec/"><img src="https://verificadordiplomadigital.mec.gov.br/images/education.png" width="260" height="64" alt="Ministério da Educação"></a>
+    </div>
+  </div>
+  <p class="footer-license">Licença do conteúdo de referência do MEC <a href="https://creativecommons.org/licenses/by-nd/3.0/deed.pt_BR">Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada</a>.</p>
+</footer>
+<script src="../verificador.js" defer></script></html>
