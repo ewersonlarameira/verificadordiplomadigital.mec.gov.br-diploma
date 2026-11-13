@@ -1,17 +1,25 @@
 <!doctype html>
 <html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verificação da estrutura XML | Demonstração</title>
-<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap">
 <style>
 * { box-sizing: border-box }
 body { margin: 0; background: #f2f6f8; color: #101010; font: 16px Raleway, Arial, sans-serif; font-variant-numeric: lining-nums }
-header { min-height: 74px; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 3.65%; flex-wrap: wrap }
-header strong { color: #1450a4; font-size: 28px; font-weight: 800 }
-header span { margin-left: 12px; color: #595959; font-size: 14px }
-nav { display: flex; gap: 16px; flex-wrap: wrap; align-items: center }
 a { color: inherit }
-nav a { color: #23558c; font-size: 12px; text-decoration: none }
-nav a:last-child { border-radius: 24px; background: #f5f5f5; color: #164e9d; padding: 8px 13px; font-size: 15px; font-weight: 800 }
+
+/* ===== Cabeçalho gov.br ===== */
+header { min-height: 70px; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 max(20px, calc((100% - 1440px) / 2)) }
+.header-identity { display: flex; align-items: center; gap: 16px; min-width: 0 }
+.header-identity a { display: block; line-height: 0 }
+.header-identity img { display: block; width: 120px; height: auto }
+.header-identity span { color: #8a8a8a; font-size: 14px; font-weight: 500; white-space: nowrap }
+header .government-links { display: flex; align-items: center; justify-content: flex-end; gap: 16px; max-width: 100% }
+header .government-dropdown { display: flex; align-items: center; gap: 16px }
+header .government-dropdown a { color: #1351b4; font-size: 12px; font-weight: 500; text-decoration: none; padding: 0; background: none }
+header .government-entry { display: inline-flex; align-items: center; gap: 10px; min-height: 32px; padding: 8px 16px; border-radius: 24px; background: #f5f5f5; color: #1351b4; font-size: 15px; font-weight: 800; text-decoration: none }
+header .government-links a:hover { text-decoration: underline }
+.government-menu { display: none }
+
 main { position: relative; isolation: isolate; padding-bottom: 70px }
 main::before { content: ''; position: absolute; z-index: -1; inset: 0 0 auto; height: 395px; background: radial-gradient(ellipse at 24% 105%, #164da5, transparent 65%), #1550aa }
 h1 { margin: 0; padding: 34px 3.65% 10px; color: #fff; border-bottom: 1px solid #ffffff80; font-size: clamp(23px, 3vw, 36px); line-height: 1.18; font-weight: 800 }
@@ -51,7 +59,7 @@ main { padding-bottom: 96px }
 .footer-license a { font-weight: 700 }
 @media (max-width: 1024px) { .site-footer .footer-columns { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 20px } }
 @media (max-width: 560px) { .site-footer .footer-columns { grid-template-columns: repeat(2,minmax(0,1fr)) } .footer-columns section { padding-inline: 8px } .footer-lower { margin-top: 36px } }
-@media (max-width: 600px) { article { margin-top: 44px } header strong { font-size: 24px } header span { margin-left: 0; display: block } }
+@media (max-width: 600px) { article { margin-top: 44px } .header-identity img { width: 96px } .header-identity span { white-space: normal; font-size: 12px } }
 [hidden] { display: none !important }
 #report-details, #document-viewer, dl { text-align: left }
 #report details { border: 1px solid #d8e1ed; border-radius: 6px; padding: 12px; margin: 10px 0 }
@@ -101,13 +109,6 @@ main { padding-bottom: 96px }
 .panel-body strong { display: block; margin-bottom: 16px }
 .panel-body ul { list-style: none; padding: 0 0 0 clamp(8px, 5vw, 35px); margin: 0 }
 .panel-body li { display: flex; align-items: baseline; gap: clamp(12px, 4vw, 26px); padding: 5px 0; line-height: 1.4; overflow-wrap: anywhere }
-header .government-links { justify-content: flex-end; gap: 10px 16px; max-width: 100% }
-header .government-links a { color: #1351b4 }
-header .government-entry { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 6px 12px }
-header .government-links a:hover { text-decoration: underline }
-header .government-dropdown { display: flex; align-items: center; gap: 16px }
-header .government-dropdown a { background: none; padding: 0; font-size: 12px; font-weight: 400 }
-.government-menu { display: none }
 @media (max-width: 960px) {
   header { flex-wrap: nowrap; gap: 8px }
   .header-identity { min-width: 0 }
@@ -119,7 +120,7 @@ header .government-dropdown a { background: none; padding: 0; font-size: 12px; f
   header .government-entry { white-space: nowrap }
 }
 </style>
-<header><div class="header-identity"><strong>Diploma Digital</strong> <span>Ministério da Educação</span></div><nav class="government-links" aria-label="Links oficiais do Governo Federal">
+<header><div class="header-identity"><a href="https://www.gov.br/" aria-label="Portal Gov.br"><img src="https://www.gov.br/++theme++padrao_govbr/img/govbr-colorido-b.png" width="120" height="43" alt="gov.br"></a><span>Ministério da Educação</span></div><nav class="government-links" aria-label="Links oficiais do Governo Federal">
   <button type="button" class="government-menu" aria-label="Links institucionais" aria-expanded="false" aria-controls="government-dropdown">⋮</button>
   <div class="government-dropdown" id="government-dropdown">
   <a href="https://www.gov.br/pt-br/orgaos-do-governo">Órgãos do Governo</a>
@@ -133,8 +134,8 @@ header .government-dropdown a { background: none; padding: 0; font-size: 12px; f
   </a>
 </nav></header>
 <main><h1>Verificação de conformidade da Estrutura XML do Diploma Digital</h1><article><h2>Verificar a estrutura XML do Diploma</h2>
-<p class="copy">Essa ferramenta permite verificar se a estrutura do arquivo XML do diploma digital está em conformidade com o padrão estabelecido pelo MEC por meio da IN SESU nº1/2020 e suas alterações.</p>
-<p class="copy">O conteúdo do arquivo não é validado, para isso é necessário acessar o link do diploma digital disponibilizado pelas IES e acessível pelo Cadastro e-MEC na aba ACERVO ACADÊMICO.</p>
+<p class="copy">Esta página de exemplo reproduz o fluxo de seleção de um arquivo XML do diploma digital. O teste é feito no seu navegador.</p>
+<p class="copy">A demonstração verifica apenas a sintaxe do XML. Para verificar a conformidade com o XSD, use o <a href="https://verificadordiplomadigital.mec.gov.br/diploma">verificador oficial do MEC</a>.</p>
 <svg class="watermark" viewBox="0 0 405 290" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round">
 <path d="M16 162C46 65 153 27 211 63s41 109-12 141-91 15-77-21c13-34 57-32 67-62 9-28-30-39-61-25-33 14-68 50-80 79M84 72C164 1 262 17 299 86c38 72 0 148-51 185M282 30c96 44 114 158 54 231M339 18c76 64 74 175 37 235"/>
 </svg>
@@ -143,7 +144,7 @@ header .government-dropdown a { background: none; padding: 0; font-size: 12px; f
 <path d="M50 67H16a8 8 0 0 0-7-7V16a8 8 0 0 0 7-7h73a8 8 0 0 0 7 7v44a8 8 0 0 0-7 7H56M40 20h25"/>
 <path d="M19 30h66M19 40h66M19 50h32" stroke="#f0f0f6"/>
 </svg><span class="scan-line"></span></div>
-<p class="hint">Faça upload do arquivo .xml e depois clique em verificar.</p>
+<p class="hint">Selecione o arquivo .xml e clique em Verificar.</p>
 <input id="file" type="file" accept=".xml,text/xml,application/xml" hidden>
 <button type="button" class="action" id="choose"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17H5a3.5 3.5 0 0 1-.4-7A6 6 0 0 1 16 8a4.5 4.5 0 0 1 2 9h-1m-5 4v-9m-4 4 4-4 4 4"/></svg>Escolher arquivo</button>
 <p class="status" id="filename" aria-live="polite"></p>
@@ -154,7 +155,7 @@ header .government-dropdown a { background: none; padding: 0; font-size: 12px; f
 <svg class="watermark" viewBox="0 0 405 290" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round">
 <path d="M16 162C46 65 153 27 211 63s41 109-12 141-91 15-77-21c13-34 57-32 67-62 9-28-30-39-61-25-33 14-68 50-80 79M84 72C164 1 262 17 299 86c38 72 0 148-51 185M282 30c96 44 114 158 54 231M339 18c76 64 74 175 37 235"/>
 </svg>
-<h2 tabindex="-1">Estrutura do XML do Diploma Digital <span>em Conformidade</span></h2>
+<h2 tabindex="-1">Estrutura do XML do Diploma Digital <span>em conformidade?</span></h2>
 <div class="report-summary"><svg class="certificate" viewBox="0 0 105 91" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
 <path d="M31 2H6a4 4 0 0 0-4 4v64a4 4 0 0 0 4 4h93a4 4 0 0 0 4-4V6a4 4 0 0 0-4-4H37"/>
 <path d="M50 67H16a8 8 0 0 0-7-7V16a8 8 0 0 0 7-7h73a8 8 0 0 0 7 7v44a8 8 0 0 0-7 7H56M40 20h25"/>
@@ -164,7 +165,7 @@ header .government-dropdown a { background: none; padding: 0; font-size: 12px; f
 <circle cx="81" cy="61" r="8" fill="#b3f3d7"/>
 </svg><dl id="document-summary"></dl></div>
 <p id="report-file" hidden></p>
-<p>A estrutura do XML e padrão de assinaturas estão em conformidade com os requisitos técnicos estabelecidos.</p>
+<p>Para saber se a estrutura do XML e as assinaturas estão em conformidade, consulte o <a href="https://verificadordiplomadigital.mec.gov.br/diploma">verificador oficial do MEC</a>.</p>
 <div class="report-heading"><strong>Relatório da verificação</strong><p id="report-version"></p></div>
 <button class="action" id="view-document" type="button" aria-expanded="false" aria-controls="document-viewer"><span aria-hidden="true">◉</span> Visualizar Documento</button>
 <div id="report-details"></div>
@@ -180,13 +181,13 @@ header .government-dropdown a { background: none; padding: 0; font-size: 12px; f
 <section><h3><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/">Acesso à Informação</a></h3><ul><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/institucional/">Institucional</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/acoes-e-programas">Ações e Programas</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/instancia-permanente-de-negociacao-e-cooperacao">Instância Permanente de Negociação e Cooperação</a></li><li><a href="https://www.gov.br/mec/pt-br/acesso-a-informacao/participacao-social">Participação Social</a></li></ul></section>
 <section><h3><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/">Centrais de Conteúdo</a></h3><ul><li><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/videos">Vídeos</a></li><li><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/audios">Áudios</a></li><li><a href="https://www.flickr.com/photos/mineducacao/albums">Fotos</a></li><li><a href="https://www.gov.br/clientes/portalgovbr/portalgovbr/pt-br/apps/@@galeria-de-aplicativos?categoria_path=/pt-br/categorias/educacao-e-pesquisa">Aplicativos</a></li><li><a href="https://www.gov.br/mec/pt-br/centrais-de-conteudo/campanhas-1">Campanhas</a></li></ul></section>
 <section><h3><a href="https://www.gov.br/mec/pt-br/sistema">Sistemas</a></h3><ul><li><a href="https://sisu.mec.gov.br/">Sisu</a></li><li><a href="https://siteprouni.mec.gov.br/">Prouni</a></li><li><a href="https://fies.mec.gov.br/">Fies</a></li><li><a href="https://emec.mec.gov.br/">E-mec</a></li></ul></section>
-<section><h3><a href="https://verificadordiplomadigitalmecgovbr-d.vercel.app/">Verificação de conformidade da Estrutura XML do Diploma Digital</a></h3><ul><li><a href="https://verificadordiplomadigitalmecgovbr-d.vercel.app/>Instituições</a></li><li><a href="https://verificadordiplomadigitalmecgovbr-d.vercel.app/">Legislação</a></li><li><a href="https://www.gov.br/mec/pt-br/diploma-digital/perguntas-frequentes">Perguntas Frequentes</a></li></ul></section>
+<section><h3><a href="https://www.gov.br/mec/pt-br/diploma-digital/">Verificação de conformidade da Estrutura XML do Diploma Digital</a></h3><ul><li><a href="https://verificadordiplomadigitalmecgovbr-d.vercel.app/">Instituições</a></li><li><a href="https://verificadordiplomadigitalmecgovbr-d.vercel.app/">Legislação</a></li><li><a href="https://www.gov.br/mec/pt-br/diploma-digital/perguntas-frequentes">Perguntas Frequentes</a></li></ul></section>
     </nav>
     <div class="footer-lower">
       <section aria-labelledby="footer-social"><h3 id="footer-social">Redes sociais</h3><ul><li><a href="https://twitter.com/mec_comunicacao">Twitter</a></li><li><a href="https://www.youtube.com/ministeriodaeducacao">YouTube</a></li><li><a href="https://www.facebook.com/ministeriodaeducacao/">Facebook</a></li><li><a href="https://www.flickr.com/mineducacao">Flickr</a></li><li><a href="https://www.instagram.com/mineducacao">Instagram</a></li><li><a href="https://soundcloud.com/mineducacao">SoundCloud</a></li></ul></section>
       <a class="footer-ministry" href="https://www.gov.br/mec/"><img src="https://verificadordiplomadigital.mec.gov.br/images/education.png" width="260" height="64" alt="Ministério da Educação"></a>
     </div>
   </div>
-  <p class="footer-license">Todo o conteúdo deste site está publicado sob a licença <a href="https://creativecommons.org/licenses/by-nd/3.0/deed.pt_BR">Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada</a>.</p>
+  <p class="footer-license">Licença do conteúdo de referência do MEC <a href="https://creativecommons.org/licenses/by-nd/3.0/deed.pt_BR">Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada</a>.</p>
 </footer>
-<script src="./verificador.js" defer></script></html>
+<script src="../verificador.js" defer></script></html>
