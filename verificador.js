@@ -55,7 +55,21 @@ function render(root, info, name) {
   const signatures = [['Diploma', root], ['DadosDiploma', data], ['DadosRegistro', register]]
     .map(([name, element]) => [name, String(signatureCount(element))]);
   byId('report-file').textContent = name;
-  fillFields(byId('document-summary'), summary);
+  const overview = byId('document-summary');
+  overview.replaceChildren();
+  summary.slice(0, 5).forEach(([label, text], index) => {
+    const row = document.createElement('div');
+    if (index >= 3) {
+      const term = document.createElement('dt');
+      term.textContent = label + ': ';
+      row.append(term);
+    }
+    const description = document.createElement('dd');
+    description.textContent = text || 'Não informado';
+    row.append(description);
+    overview.append(row);
+  });
+  byId('report-version').textContent = 'Versão declarada no XML: ' + (summary[5][1] || 'Não informada');
   const panels = byId('report-details');
   panels.replaceChildren();
   addPanel(panels, 'Estrutura do Diploma Digital', [['Sintaxe', 'XML bem-formado'], ['Conformidade XSD', 'Verificação no MEC']]);
@@ -134,3 +148,5 @@ byId('reset').addEventListener('click', () => {
   form.hidden = false;
   choose.focus();
 });
+
+byId('save-report').addEventListener('click', () => window.print());
