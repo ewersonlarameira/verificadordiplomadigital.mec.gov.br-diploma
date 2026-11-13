@@ -178,3 +178,17 @@ byId('reset').addEventListener('click', () => {
 });
 
 byId('save-report').addEventListener('click', () => window.print());
+
+const governmentMenu = document.querySelector('.government-menu');
+const governmentNav = governmentMenu.closest('nav');
+governmentMenu.addEventListener('click', () => {
+  governmentMenu.setAttribute('aria-expanded', String(governmentMenu.getAttribute('aria-expanded') !== 'true'));
+});
+document.addEventListener('click', (event) => {
+  if (!governmentNav.contains(event.target)) governmentMenu.setAttribute('aria-expanded', 'false');
+});
+governmentNav.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape' || governmentMenu.getAttribute('aria-expanded') !== 'true') return;
+  governmentMenu.setAttribute('aria-expanded', 'false');
+  governmentMenu.focus();
+});

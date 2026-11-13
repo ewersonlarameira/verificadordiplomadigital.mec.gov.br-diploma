@@ -105,16 +105,31 @@ header .government-links { justify-content: flex-end; gap: 10px 16px; max-width:
 header .government-links a { color: #1351b4 }
 header .government-entry { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 6px 12px }
 header .government-links a:hover { text-decoration: underline }
-@media (max-width: 600px) { header .government-links { justify-content: flex-start } }
+header .government-dropdown { display: flex; align-items: center; gap: 16px }
+header .government-dropdown a { background: none; padding: 0; font-size: 12px; font-weight: 400 }
+.government-menu { display: none }
+@media (max-width: 960px) {
+  header { flex-wrap: nowrap; gap: 8px }
+  .header-identity { min-width: 0 }
+  header .government-links { position: relative; flex: none; flex-wrap: nowrap; gap: 4px }
+  .government-menu { display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: transparent; color: #1351b4; font: bold 24px/1 Arial, sans-serif; cursor: pointer }
+  header .government-dropdown { display: none; position: absolute; z-index: 2; right: 0; top: calc(100% + 6px); min-width: 186px; padding: 4px 0; background: white; border: 1px solid #dde3ea; border-radius: 8px; box-shadow: 0 6px 20px #071d4126 }
+  header .government-menu[aria-expanded="true"] + .government-dropdown { display: block }
+  header .government-dropdown a { display: block; padding: 10px 14px }
+  header .government-entry { white-space: nowrap }
+}
 </style>
-<header><div><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav class="government-links" aria-label="Links oficiais do Governo Federal">
+<header><div class="header-identity"><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav class="government-links" aria-label="Links oficiais do Governo Federal">
+  <button type="button" class="government-menu" aria-label="Links institucionais" aria-expanded="false" aria-controls="government-dropdown">⋮</button>
+  <div class="government-dropdown" id="government-dropdown">
   <a href="https://www.gov.br/pt-br/orgaos-do-governo">Órgãos do Governo</a>
   <a href="https://www.gov.br/acessoainformacao/pt-br">Acesso à Informação</a>
   <a href="https://www4.planalto.gov.br/legislacao">Legislação</a>
   <a href="https://www.gov.br/accessibility-info">Acessibilidade</a>
+  </div>
   <a class="government-entry" href="https://sso.acesso.gov.br/login" aria-label="Entrar no portal oficial Gov.br">
     <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="4.5" r="3"/><path d="M1.5 15v-2.2A4.3 4.3 0 0 1 5.8 8.5h4.4a4.3 4.3 0 0 1 4.3 4.3V15z"/></svg>
-    Entrar no Gov.br
+    Entrar
   </a>
 </nav></header>
 <main><h1>Verificação de conformidade da Estrutura XML do Diploma Digital</h1><article><h2>Verificar a estrutura XML do Diploma</h2>
