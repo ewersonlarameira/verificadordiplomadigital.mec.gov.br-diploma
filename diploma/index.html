@@ -101,8 +101,22 @@ main { padding-bottom: 96px }
 .panel-body strong { display: block; margin-bottom: 16px }
 .panel-body ul { list-style: none; padding: 0 0 0 clamp(8px, 5vw, 35px); margin: 0 }
 .panel-body li { display: flex; align-items: baseline; gap: clamp(12px, 4vw, 26px); padding: 5px 0; line-height: 1.4; overflow-wrap: anywhere }
+header .government-links { justify-content: flex-end; gap: 10px 16px; max-width: 100% }
+header .government-links a { color: #1351b4 }
+header .government-entry { display: inline-flex; align-items: center; gap: 8px; min-height: 32px; padding: 6px 12px }
+header .government-links a:hover { text-decoration: underline }
+@media (max-width: 600px) { header .government-links { justify-content: flex-start } }
 </style>
-<header><div><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav aria-label="Referências"><a href="https://www.gov.br/mec/pt-br/diploma-digital">Diploma Digital</a><a href="https://verificadordiplomadigital.mec.gov.br/diploma">Verificador oficial</a></nav></header>
+<header><div><strong>Diploma Digital</strong> <span>· Demonstração não oficial</span></div><nav class="government-links" aria-label="Links oficiais do Governo Federal">
+  <a href="https://www.gov.br/pt-br/orgaos-do-governo">Órgãos do Governo</a>
+  <a href="https://www.gov.br/acessoainformacao/pt-br">Acesso à Informação</a>
+  <a href="https://www4.planalto.gov.br/legislacao">Legislação</a>
+  <a href="https://www.gov.br/accessibility-info">Acessibilidade</a>
+  <a class="government-entry" href="https://sso.acesso.gov.br/login" aria-label="Entrar no portal oficial Gov.br">
+    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="4.5" r="3"/><path d="M1.5 15v-2.2A4.3 4.3 0 0 1 5.8 8.5h4.4a4.3 4.3 0 0 1 4.3 4.3V15z"/></svg>
+    Entrar no Gov.br
+  </a>
+</nav></header>
 <main><h1>Verificação de conformidade da Estrutura XML do Diploma Digital</h1><article><h2>Verificar a estrutura XML do Diploma</h2>
 <p class="copy">Esta página de exemplo reproduz o fluxo de seleção de um arquivo XML do diploma digital. O teste é feito no seu navegador.</p>
 <p class="copy">A demonstração verifica apenas a sintaxe do XML. Para verificar a conformidade com o XSD, use o <a href="https://verificadordiplomadigital.mec.gov.br/diploma">verificador oficial do MEC</a>.</p>
